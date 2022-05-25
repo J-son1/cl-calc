@@ -5,8 +5,29 @@ function main() {
     var firstStr = (0, readline_sync_1.question)('Enter first number:\n');
     var operator = (0, readline_sync_1.question)('Enter operator:\n');
     var secondStr = (0, readline_sync_1.question)('Enter second number\n');
-    var op = isOperator(operator);
-    console.log(op);
+    var validInput = isNumber(firstStr) && isOperator(operator) && isNumber(secondStr);
+    if (validInput) {
+        var firstNum = parseInt(firstStr);
+        var secondNum = parseInt(secondStr);
+        var result = calculate(firstNum, operator, secondNum);
+        console.log(result);
+    }
+    else {
+        console.log('\nInvalid input\n');
+        main();
+    }
+}
+function calculate(firstNum, operator, secondNum) {
+    switch (operator) {
+        case '+':
+            return firstNum + secondNum;
+        case '-':
+            return firstNum - secondNum;
+        case '*':
+            return firstNum * secondNum;
+        case '/':
+            return firstNum / secondNum;
+    }
 }
 function isOperator(operator) {
     switch (operator) {
